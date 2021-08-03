@@ -1,0 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@400;700&family=Overpass:wght@400;700&family=Ubuntu:wght@400;700&display=swap");
+
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
