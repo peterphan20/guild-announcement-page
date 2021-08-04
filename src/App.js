@@ -1,16 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
-import GuildAnnouncementPage from "./components/GuildAnnouncementPage";
-import AboutsPage from "./components/AboutsPage";
-import Login from "./components/Login";
+import Header from "./organisms/Header";
+import GuildAnnouncementPage from "./pages/GuildAnnouncementPage";
+import AboutsPage from "./pages/AboutsPage";
+import Login from "./pages/Login";
 
 const App = () => {
 	return (
 		<div className="bg-gray-100">
 			<Router>
-				<Navbar />
+				<Header />
 				<Switch>
 					<Route path="/" exact component={GuildAnnouncementPage} />
 					<Route path="/aboutUs" component={AboutsPage} />
