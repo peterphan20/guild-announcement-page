@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 
 const App = () => {
 	return (
-		<div className="bg-gray-100">
+		<div className="bg-gray-100 text-gray-900">
 			<Router>
 				<Header />
 				<Switch>
