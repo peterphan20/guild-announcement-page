@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const DesktopMenu = () => {
-  return (
-    <div>
-      desktop menu
-    </div>
-  )
-}
+	return <div>desktop menu</div>;
+};
 
-export default DesktopMenu
+export default DesktopMenu;
