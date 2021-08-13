@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllArticles } from "../helpers/articlesCRUD";
-import Gallery from "../organisms/Gallery";
 import Hero from "../organisms/Hero";
+import Gallery from "../organisms/Gallery";
 import ArticlesList from "../organisms/ArticlesList";
 
 const GuildAnnouncementPage = () => {
@@ -14,7 +14,7 @@ const GuildAnnouncementPage = () => {
 	return (
 		<div>
 			<Hero />
-			<Gallery />
+			<Gallery articles={articles} />
 			<ArticlesList articles={articles} />
 		</div>
 	);
