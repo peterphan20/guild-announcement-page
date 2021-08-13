@@ -11,13 +11,13 @@ export const createArticle = async (articlesObj) => {
 		headers: { "Content-Type": "application/json; charset=UTF-8" },
 	});
 	const data = res.json();
-	return data;
+	return data.rows;
 };
 
 export const getArticle = async (articleId) => {
 	const res = await fetch(`http://localhost:5000/articles/${articleId}`);
 	const data = await res.json();
-	return data;
+	return data.rows;
 };
 
 export const updateArticle = async (articleId, articlesObj) => {
@@ -27,7 +27,7 @@ export const updateArticle = async (articleId, articlesObj) => {
 		headers: { "Content-Type": "application/json; charset=UTF-8" },
 	});
 	const data = res.json();
-	return data;
+	return data.rows;
 };
 
 export const deleteArticle = async (articleId) => {
@@ -36,5 +36,5 @@ export const deleteArticle = async (articleId) => {
 		headers: { "Content-Type": "application/json; charset=UTF-8" },
 	});
 	const data = res.json();
-	return data;
+	return data.rows[0];
 };

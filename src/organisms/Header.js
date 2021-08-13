@@ -9,44 +9,44 @@ const Header = () => {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 	const [isOpen, setOpen] = useState(false);
 
+	const trackWindowChanges = () => {
+		setWindowWidth(window.innerWidth);
+	};
+
 	useEffect(() => {
-		window.addEventListener("resize", () => {
-			setWindowWidth(window.innerWidth);
-		});
+		window.addEventListener("resize", trackWindowChanges);
 		if (windowWidth > 864) {
 			setOpen(false);
 		}
 
-		return window.removeEventListener("resize", () => {
-			console.log("Resize listener cleaned up");
-		});
+		return () => {
+			window.removeEventListener("resize", trackWindowChanges);
+		};
 	}, [windowWidth]);
 
 	const showMenu = () => {
 		return windowWidth > 864 ? (
 			<DesktopMenu />
 		) : (
-			<span className="z-20">
+			<span className="z-30">
 				<Hamburger toggled={isOpen} toggle={setOpen} />
 			</span>
 		);
 	};
 
 	return (
-		<div className="">
-			<header className="container max-w-screen-lg mx-auto pt-9 pb-7 px-8 flex justify-between items-end">
-				<Link
-					to="/"
-					className="font-headers font-bold text-3xl"
-					onClick={() => setTimeout(() => window.scrollTo(0, 0), 250)}
-					label="Clicking this logo takes you to the top of the page"
-				>
-					Eldridge
-				</Link>
-				{showMenu()}
-				<MobileMenu setOpen={setOpen} isOpen={isOpen} />
-			</header>
-		</div>
+		<header className="fixed top-0 left-0 container bg-indigo-600 text-gray-100 max-w-screen-lg mx-auto py-4 px-8 flex justify-between items-end z-20">
+			<Link
+				to="/"
+				className="font-logo font-bold text-3xl"
+				onClick={() => setTimeout(() => window.scrollTo(0, 0), 250)}
+				label="Clicking this logo takes you to the top of the page"
+			>
+				Eldridge
+			</Link>
+			{showMenu()}
+			<MobileMenu setOpen={setOpen} isOpen={isOpen} />
+		</header>
 	);
 };
 

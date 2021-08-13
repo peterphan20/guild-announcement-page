@@ -3,9 +3,13 @@ module.exports = {
 	darkMode: false, // or 'media' or 'class'
 	theme: {
 		extend: {
+			backgroundColor: (theme) => ({
+				darkBackground: "hsl(240, 7%, 6%)",
+				darkAccent: "hsl(240, 5%, 10%)",
+			}),
 			fontFamily: {
-				headers: ["Overpass", "sans-serif"],
-				body: ["Ubuntu", "sans-serif"],
+				logo: ["Overpass", "sans-serif"],
+				headers: ["Ubuntu", "sans-serif"],
 				text: ["Hind Madurai", "sans-serif"],
 			},
 		},

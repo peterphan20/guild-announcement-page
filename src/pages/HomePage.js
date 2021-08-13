@@ -4,7 +4,7 @@ import Hero from "../organisms/Hero";
 import Gallery from "../organisms/Gallery";
 import ArticlesList from "../organisms/ArticlesList";
 
-const GuildAnnouncementPage = () => {
+const HomePage = () => {
 	const [articles, setArticles] = useState([]);
 
 	useEffect(() => {
@@ -12,7 +12,7 @@ const GuildAnnouncementPage = () => {
 	}, []);
 
 	return (
-		<div>
+		<div className="bg-gray-100 text-gray-900 z-10">
 			<Hero />
 			<Gallery articles={articles} />
 			<ArticlesList articles={articles} />
@@ -20,4 +20,4 @@ const GuildAnnouncementPage = () => {
 	);
 };
 
-export default GuildAnnouncementPage;
+export default HomePage;

@@ -16,10 +16,22 @@ const MobileMenu = ({ setOpen, isOpen }) => {
 			}`}
 		>
 			<MobileMenuAnchor text="Home" link="/" clickHandler={() => handleClick("root")} />
-			<MobileMenuAnchor text="Articles" link="/articles" />
-			<MobileMenuAnchor text="Gallery" link="/gallery" />
-			<MobileMenuAnchor text="About Us" link="/aboutUs" />
-			<MobileMenuAnchor text="Sign In" link="/login" />
+			<MobileMenuAnchor
+				text="Articles"
+				link="/articles"
+				clickHandler={() => handleClick("articles")}
+			/>
+			<MobileMenuAnchor
+				text="Gallery"
+				link="/gallery"
+				clickHandler={() => handleClick("gallery")}
+			/>
+			<MobileMenuAnchor
+				text="About Us"
+				link="/aboutUs"
+				clickHandler={() => handleClick("about-us")}
+			/>
+			<MobileMenuAnchor text="Sign In" link="/login" clickHandler={() => handleClick("login")} />
 		</nav>
 	);
 };
