@@ -8,11 +8,12 @@ const ArticlesList = ({ articles }) => {
 
 	return (
 		<section className="flex flex-col justify-center items-center w-full h-full px-3">
+			<span id="articles" className="block relative -top-16" />
 			<h1 className="text-center font-logo font-semibold border-b-2 border-indigo-200 px-3 py-1 mt-7 mb-7 w-full">
 				Articles
 			</h1>
 			{renderedArticles}
-			<button className="font-headers font-semibold border-b-2 border-indigo-200 px-3 py-1 mt-7 mb-7">
+			<button className="font-logo font-semibold border-b-2 border-indigo-200 px-3 py-1 mt-7">
 				LOAD MORE
 			</button>
 		</section>

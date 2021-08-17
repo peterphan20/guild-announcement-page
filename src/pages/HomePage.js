@@ -3,6 +3,7 @@ import { getAllArticles } from "../helpers/articlesCRUD";
 import Hero from "../organisms/Hero";
 import Gallery from "../organisms/Gallery";
 import ArticlesList from "../organisms/ArticlesList";
+import Footer from "../organisms/Footer";
 
 const HomePage = () => {
 	const [articles, setArticles] = useState([]);
@@ -12,10 +13,11 @@ const HomePage = () => {
 	}, []);
 
 	return (
-		<div className="bg-gray-100 text-gray-900 z-10">
+		<div className="bg-darkAccent text-gray-200 z-10">
 			<Hero />
 			<Gallery articles={articles} />
 			<ArticlesList articles={articles} />
+			<Footer />
 		</div>
 	);
 };
