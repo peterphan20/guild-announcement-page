@@ -1,9 +1,16 @@
 import React from "react";
 import Article from "../molecules/Article";
+import { useArticlesData } from "../context/ArticleContext";
 
-const ArticlesList = ({ articles }) => {
-	const renderedArticles = articles.map((article) => (
-		<Article article={article} key={article.article_id} />
+
+const ArticlesList = () => {
+	const articlesData = useArticlesData();
+
+	const renderedArticles = articlesData.map((article) => (
+		<Article
+			key={article.article_id}
+			article={article}
+		/>
 	));
 
 	return (

@@ -1,7 +1,7 @@
 import React from "react";
 
 const ArticlePage = () => {
-	return <div>Article's Page</div>;
+	return <div>article page</div>;
 };
 
 export default ArticlePage;

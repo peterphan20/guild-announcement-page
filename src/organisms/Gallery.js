@@ -3,9 +3,12 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
 import GalleryTile from "../molecules/GalleryTile";
+import { useArticlesData } from "../context/ArticleContext";
 
-const Gallery = ({ articles }) => {
-	const renderedImages = articles.map((article, idx) => (
+const Gallery = () => {
+	const articlesData = useArticlesData();
+
+	const renderedImages = articlesData.map((article, idx) => (
 		<GalleryTile article={article} key={idx} />
 	));
 
