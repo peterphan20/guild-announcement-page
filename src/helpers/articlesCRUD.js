@@ -1,7 +1,7 @@
-export const getAllArticles = async (cb) => {
+export const getAllArticles = async (callback) => {
 	const res = await fetch("http://localhost:5000/articles");
 	const data = await res.json();
-	cb(data.rows);
+	callback(data.rows);
 };
 
 export const createArticle = async (articlesObj) => {

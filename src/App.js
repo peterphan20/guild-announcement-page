@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Header from "./organisms/Header";
-import { ArticlesProvider } from "./context/ArticleContext";
+import { ArticlesContext } from "./context/ArticleContext";
 import { routes } from "./routes";
 
 const App = () => {
+	const [selectedArticle, setSelectedArticle] = useState(null);
+
 	return (
-		<ArticlesProvider>
+		<ArticlesContext.Provider value={[selectedArticle, setSelectedArticle]}>
 			<Router>
 				<Header />
 				<Switch>
@@ -16,7 +18,7 @@ const App = () => {
 					})}
 				</Switch>
 			</Router>
-		</ArticlesProvider>
+		</ArticlesContext.Provider>
 	);
 };
 

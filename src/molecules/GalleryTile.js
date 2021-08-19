@@ -1,5 +1,4 @@
 import React from "react";
-
 import Image from "../atoms/Image";
 
 const GalleryTile = ({ article }) => {

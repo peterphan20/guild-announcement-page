@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Article from "../molecules/Article";
-import { useArticlesData } from "../context/ArticleContext";
-
+import { getAllArticles } from "../helpers/articlesCRUD";
 
 const ArticlesList = () => {
-	const articlesData = useArticlesData();
+	const [articlesResults, setArticlesResults] = useState([]);
 
-	const renderedArticles = articlesData.map((article) => (
-		<Article
-			key={article.article_id}
-			article={article}
-		/>
+	useEffect(() => {
+		getAllArticles(setArticlesResults);
+	}, []);
+
+	const renderedArticles = articlesResults.map((article) => (
+		<Article key={article.article_id} article={article} />
 	));
 
 	return (
