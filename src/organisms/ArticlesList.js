@@ -20,7 +20,7 @@ const ArticlesList = () => {
 				Articles
 			</h1>
 			{renderedArticles}
-			<button className="font-logo font-semibold border-b-2 border-indigo-200 px-3 py-1 mt-7">
+			<button className="font-logo font-semibold border-b-2 border-indigo-200 px-3 pt-1 mt-7 mb-12">
 				LOAD MORE
 			</button>
 		</section>

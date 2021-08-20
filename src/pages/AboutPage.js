@@ -3,7 +3,7 @@ import Image from "../atoms/Image";
 
 const AboutPage = () => {
 	return (
-		<div className="bg-darkAccent text-gray-200 w-full h-screen py-20 px-3">
+		<div className="bg-darkBackground text-gray-200 w-full h-screen py-20 px-3">
 			<p className="text-center font-logo font-semibold border-b-2 border-indigo-200 py-1 mt-5 mb-7">
 				About Us
 			</p>

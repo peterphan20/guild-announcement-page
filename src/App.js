@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Header from "./organisms/Header";
-import { ArticlesContext } from "./context/ArticleContext";
+import Footer from "./organisms/Footer";
 import { routes } from "./routes";
+import { ArticlesContext } from "./context/ArticleContext";
 
 const App = () => {
 	const [selectedArticle, setSelectedArticle] = useState(null);
@@ -17,6 +18,7 @@ const App = () => {
 						return <Route {...route} key={idx} />;
 					})}
 				</Switch>
+				<Footer />
 			</Router>
 		</ArticlesContext.Provider>
 	);

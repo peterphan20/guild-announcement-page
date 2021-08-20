@@ -2,15 +2,13 @@ import React from "react";
 import Hero from "../organisms/Hero";
 import Gallery from "../organisms/Gallery";
 import ArticlesList from "../organisms/ArticlesList";
-import Footer from "../organisms/Footer";
 
 const HomePage = () => {
 	return (
-		<div className="bg-darkAccent text-gray-200 z-10">
+		<div className="bg-darkBackground text-gray-200 z-10 w-full h-full">
 			<Hero />
 			<Gallery />
 			<ArticlesList />
-			<Footer />
 		</div>
 	);
 };
