@@ -4,6 +4,12 @@ export const getAllArticles = async (callback) => {
 	callback(data.rows);
 };
 
+export const getArticle = async (articleId) => {
+	const res = await fetch(`http://localhost:5000/articles/${articleId}`);
+	const data = await res.json();
+	return data.rows;
+};
+
 export const createArticle = async (articlesObj) => {
 	const res = await fetch("http://localhost:5000/articles", {
 		method: "POST",
@@ -11,12 +17,6 @@ export const createArticle = async (articlesObj) => {
 		headers: { "Content-Type": "application/json; charset=UTF-8" },
 	});
 	const data = res.json();
-	return data.rows;
-};
-
-export const getArticle = async (articleId) => {
-	const res = await fetch(`http://localhost:5000/articles/${articleId}`);
-	const data = await res.json();
 	return data.rows;
 };
 
