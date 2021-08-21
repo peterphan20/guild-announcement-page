@@ -1,17 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Hero = () => {
 	return (
-		<section className="font-logo font-semibold mt-20 mb-10 py-10 px-8">
+		<section className="font-logo font-semibold pt-36 pb-8 px-8 mb-8">
 			<span id="home" className="block relative -top-32" />
-			<h1 className="text-xl font-bold pb-1">WELCOME TO ELDRIDGE</h1>
-			<h2 className="text-base pb-4">WANT TO MAKE HISTORY?</h2>
-			<Link to="/login">
-				<button className="bg-indigo-600 text-base rounded py-1 px-5">
-					Join Now
-				</button>
-			</Link>
+			<h1 className="text-3xl font-bold pb-1">Welcome To Eldridge</h1>
+			<h2 className="text-sm font-normal font-headers pb-4">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+				labore et dolore magna aliqua. Ut enim ad minim veniam.
+			</h2>
+			<button className="bg-indigo-600 font-logo text-md rounded py-3 px-6">
+				<a href="https://guildroster.netlify.app/" target="_blank" rel="noreferrer">
+					Meet The Roster
+				</a>
+			</button>
 		</section>
 	);
 };

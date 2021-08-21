@@ -33,7 +33,6 @@ export const updateArticle = async (articleId, articlesObj) => {
 export const deleteArticle = async (articleId) => {
 	const res = await fetch(`http://localhost:5000/articles/${articleId}`, {
 		method: "DELETE",
-		headers: { "Content-Type": "application/json; charset=UTF-8" },
 	});
 	const data = res.json();
 	return data.rows[0];

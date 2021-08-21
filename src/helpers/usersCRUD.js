@@ -7,7 +7,7 @@ export const getAllUsers = async (callback) => {
 export const getUser = async (userId) => {
 	const res = await fetch(`http://localhost:5000/users/${userId}`);
 	const data = await res.json();
-	return data.rows;
+	return data;
 };
 
 export const userSignIn = async (userObj) => {
@@ -17,7 +17,7 @@ export const userSignIn = async (userObj) => {
 		headers: { "Content-Type": "application/json; charset=UTF-8" },
 	});
 	const data = await res.json();
-	return data.rows;
+	return data;
 };
 
 export const createUser = async (userObj) => {
@@ -30,20 +30,26 @@ export const createUser = async (userObj) => {
 	return data;
 };
 
-export const updateUser = async (userId, userObj) => {
+export const updateUser = async (userId, userObj, token) => {
 	const res = await fetch(`http://localhost:5000/users/${userId}`, {
 		method: "PUT",
 		body: JSON.stringify(userObj),
-		headers: { "Content-Type": "application/json; charset=UTF-8" },
+		headers: {
+			"Content-Type": "application/json; charset=UTF-8",
+			Authorization: token,
+		},
 	});
 	const data = await res.json();
 	return data;
 };
 
-export const deleteArticle = async (userId) => {
+export const deleteUser = async (userId, token) => {
 	const res = await fetch(`http://localhost:5000/articles/${userId}`, {
 		method: "DELETE",
-		headers: { "Content-Type": "application/json; charset=UTF-8" },
+		headers: {
+			"Content-Type": "application/json; charset=UTF-8",
+			Authorization: token,
+		},
 	});
 	const data = res.json();
 	return data.rows[0];
