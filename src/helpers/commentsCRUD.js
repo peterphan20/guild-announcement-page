@@ -4,7 +4,7 @@ export const createComment = async (commentObj, token) => {
 		body: JSON.stringify(commentObj),
 		headers: {
 			"Content-Type": "application/json; charset=UTF-8",
-			Authorization: token,
+			auth: token,
 		},
 	});
 	const data = res.json();
@@ -17,7 +17,7 @@ export const updateComment = async (commentId, commentObj, token) => {
 		body: JSON.stringify(commentObj),
 		headers: {
 			"Content-Type": "application/json; charset=UTF-8",
-			Authorization: token,
+			auth: token,
 		},
 	});
 	const data = await res.json();
@@ -29,9 +29,9 @@ export const deleteComment = async (commentId, token) => {
 		method: "DELETE",
 		headers: {
 			"Content-Type": "application/json; charset=UTF-8",
-			Authorization: token,
+			auth: token,
 		},
 	});
-	const data = res.json();
-	return data[0].rows;
+	const data = await res.json();
+	return data.rows;
 };

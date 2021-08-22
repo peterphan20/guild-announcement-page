@@ -24,7 +24,8 @@ const MobileMenu = ({ setOpen, isOpen }) => {
 			<MobileMenuAnchor text="Articles" link="/" clickHandler={() => handleClick("articles")} />
 			<MobileMenuAnchor text="Gallery" link="/" clickHandler={() => handleClick("gallery")} />
 			<MobileMenuAnchor text="About Us" link="/about-us" clickHandler={handlePageChangeClick} />
-			<MobileMenuAnchor text="Sign In" link="/sign-in" clickHandler={handlePageChangeClick} />
+			<MobileMenuAnchor text="Login" link="/login" clickHandler={handlePageChangeClick} />
+			<MobileMenuAnchor text="Sign Up" link="/sign-up" clickHandler={handlePageChangeClick} />
 		</nav>
 	);
 };

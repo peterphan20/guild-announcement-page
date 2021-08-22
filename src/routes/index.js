@@ -1,6 +1,7 @@
 import HomePage from "../pages/HomePage";
 import AboutPage from "../pages/AboutPage";
-import SignInForm from "../pages/SignInForm";
+import Login from "../pages/Login";
+import SignUpForm from "../pages/SignUpForm";
 import ArticlePage from "../pages/ArticlePage";
 import AdminDashboard from "../pages/AdminDashboard";
 
@@ -16,9 +17,14 @@ export const routes = [
 		component: AboutPage,
 	},
 	{
-		path: "/sign-in",
+		path: "/login",
 		exact: true,
-		component: SignInForm,
+		component: Login,
+	},
+	{
+		path: "/sign-up",
+		exact: true,
+		component: SignUpForm,
 	},
 	{
 		path: "/articles/:id",

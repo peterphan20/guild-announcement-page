@@ -5,7 +5,7 @@ import InputLoginMobile from "../atoms/InputLoginMobile";
 import { userSignIn } from "../helpers/usersCRUD";
 import { userDetailsContext } from "../context/UserDetailsProvider";
 
-const SignInForm = () => {
+const Login = () => {
 	const [loginusername, setLoginUsername] = useState("");
 	const [loginpassword, setLoginPassword] = useState("");
 	const [authResponse, setAuthResponse] = useState("");
@@ -23,21 +23,22 @@ const SignInForm = () => {
 
 		if (response.code === 200) {
 			// TODO: if sign in successful, then set local storage and set state
-			localStorage.setItem("authToken", response.wristband);
+			localStorage.setItem("authToken", response.token);
 			setUserDetails(response.userId);
 			setAuthResponse("");
+			console.log("you are signed in");
 			history.push("/");
-			console.log("signed in");
 		} else {
 			// TODO: if not successful, then tell users invalid sign in
 			setAuthResponse(response.message);
+			console.log("something went wrong");
 		}
 	};
 
 	return (
 		<div className="bg-darkBackground pt-32 px-8 w-full h-screen">
-			<h1 className="font-logo text-gray-200 text-2xl text-center pb-5">Sign In to Eldridge</h1>
-			<div className="flex flex-col justify-center items-center font-text bg-gray-800 text-gray-200 rounded pb-5 pt-2 px-5 w-full">
+			<h1 className="font-logo text-gray-200 text-2xl text-center pb-5">Login to Eldridge</h1>
+			<div className="flex flex-col justify-center items-center font-text bg-gray-800 text-gray-200 rounded pb-8 pt-2 px-5 w-full">
 				<div className="pb-6">
 					{authResponse ? (
 						<p className="text-sm border-2 border-red-600 rounded-xl py-3 px-6">{authResponse}</p>
@@ -65,11 +66,11 @@ const SignInForm = () => {
 					className="bg-indigo-600 text-md rounded-lg p-1 mt-2 mb-3 w-full"
 					onClick={onHandleSignIn}
 				>
-					Sign In
+					Login
 				</button>
 			</div>
 		</div>
 	);
 };
 
-export default SignInForm;
+export default Login;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Header from "./organisms/Header";
@@ -7,6 +7,10 @@ import UserDetailsProvider from "./context/UserDetailsProvider";
 import { routes } from "./routes";
 
 const App = () => {
+	useEffect(() => {
+		localStorage.getItem("authToken");
+	}, []);
+
 	return (
 		<UserDetailsProvider>
 			<Router>
