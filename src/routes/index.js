@@ -3,7 +3,8 @@ import AboutPage from "../pages/AboutPage";
 import Login from "../pages/Login";
 import SignUpForm from "../pages/SignUpForm";
 import ArticlePage from "../pages/ArticlePage";
-import AdminDashboard from "../pages/AdminDashboard";
+import UserDashboard from "../pages/UserDashboard";
+import CreateArticlePage from "../pages/CreateArticlePage";
 
 export const routes = [
 	{
@@ -32,8 +33,13 @@ export const routes = [
 		component: ArticlePage,
 	},
 	{
-		path: "/admin-dashboard",
+		path: "/create-article-page",
 		exact: true,
-		component: AdminDashboard,
+		component: CreateArticlePage
+	},
+	{
+		path: "/user-dashboard",
+		exact: true,
+		component: UserDashboard,
 	},
 ];

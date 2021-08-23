@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
-import InputLoginMobile from "../atoms/InputLoginMobile";
+import InputFieldLogin from "../atoms/InputFieldLogin";
 import { userSignIn } from "../helpers/usersCRUD";
 import { userDetailsContext } from "../context/UserDetailsProvider";
 
@@ -49,7 +49,7 @@ const Login = () => {
 				<label htmlFor="username" className="text-sm pb-2 self-start">
 					Username
 				</label>
-				<InputLoginMobile
+				<InputFieldLogin
 					id="username"
 					value={loginusername}
 					onChange={(e) => setLoginUsername(e.target.value)}
@@ -57,7 +57,7 @@ const Login = () => {
 				<label htmlFor="password" className="text-sm pb-2 self-start">
 					Password
 				</label>
-				<InputLoginMobile
+				<InputFieldLogin
 					id="password"
 					value={loginpassword}
 					onChange={(e) => setLoginPassword(e.target.value)}

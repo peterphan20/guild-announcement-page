@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import InputLoginMobile from "../atoms/InputLoginMobile";
+import InputLoginMobile from "../atoms/InputFieldLogin";
 import { createUser } from "../helpers/usersCRUD";
 
 const SignUpForm = () => {

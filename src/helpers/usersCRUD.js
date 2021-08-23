@@ -4,12 +4,6 @@ export const getAllUsers = async (callback) => {
 	callback(data.rows);
 };
 
-export const getUser = async (userId) => {
-	const res = await fetch(`http://localhost:5000/users/${userId}`);
-	const data = await res.json();
-	return data;
-};
-
 export const userSignIn = async (userObj) => {
 	const res = await fetch("http://localhost:5000/auth/login", {
 		method: "POST",
