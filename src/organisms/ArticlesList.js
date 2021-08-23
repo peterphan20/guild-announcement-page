@@ -4,6 +4,7 @@ import { getAllArticles } from "../helpers/articlesCRUD";
 
 const ArticlesList = () => {
 	const [articlesResults, setArticlesResults] = useState([]);
+	console.log(articlesResults);
 
 	useEffect(() => {
 		getAllArticles(setArticlesResults);

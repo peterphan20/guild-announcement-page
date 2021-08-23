@@ -46,5 +46,5 @@ export const deleteUser = async (userId, token) => {
 		},
 	});
 	const data = res.json();
-	return data.rows[0];
+	return data.rows;
 };
