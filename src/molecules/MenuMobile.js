@@ -1,6 +1,5 @@
-import { useContext } from "react";
+import React from "react";
 import MobileMenuAnchor from "../atoms/MenuAnchorMobile";
-import { userDetailsContext } from "../context/UserDetailsProvider";
 
 const MobileMenu = ({ setOpen, isOpen }) => {
 	const handleClick = (id) => {

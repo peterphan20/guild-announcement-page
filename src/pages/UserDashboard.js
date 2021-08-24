@@ -1,8 +1,19 @@
 import { useState, useContext } from "react";
 import { userDetailsContext } from "../context/UserDetailsProvider";
+import { deleteUser } from "../helpers/usersCRUD";
 
 const UserDashboard = () => {
 	const [editUsername, setEditUsername] = useState("");
+	const [userDetails] = useContext(userDetailsContext);
+
+	const onHandleDeleteUser = async () => {
+		const token = localStorage.getItem("authToken");
+		if (!token) return;
+
+		console.log(userDetails);
+		await deleteUser(userDetails, token);
+		console.log(`${userDetails} has been deleted`);
+	};
 
 	return (
 		<div className="bg-darkBackground text-gray-100 pt-24 px-5 w-full h-screen">
@@ -23,6 +34,7 @@ const UserDashboard = () => {
 			</p>
 			<button
 				className="font-text text-red-600 text-sm border border-gray-500 rounded-lg py-1 px-2"
+				onClick={onHandleDeleteUser}
 			>
 				Delete your account
 			</button>

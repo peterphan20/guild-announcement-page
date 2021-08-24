@@ -2,7 +2,12 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
-// import GalleryTile from "../molecules/GalleryTile";
+import GalleryTile from "../molecules/GalleryTile";
+import { imageURLList } from "../assets";
+
+const renderedImage = imageURLList.map((image, idx) => {
+	return <GalleryTile key={idx} image={image} />;
+});
 
 const Gallery = () => {
 	return (
@@ -11,7 +16,7 @@ const Gallery = () => {
 			<h1 className="flex justify-center font-headers font-semibold border-b-2 border-indigo-200 px-3 py-1 mt-7 mb-7">
 				Gallery
 			</h1>
-			<Carousel showThumbs={false}></Carousel>
+			<Carousel showThumbs={false}>{renderedImage}</Carousel>
 		</section>
 	);
 };
