@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { deleteComment, updateComment } from "../helpers/commentsCRUD";
 
 const Comment = ({ comment }) => {
-	const [currComment, setCurrComment] = useState("");
+	// const [currComment, setCurrComment] = useState("");
 	const [editCommentContent, setEditCommentContent] = useState("");
 	const [editToggle, setEditToggle] = useState(false);
 
 	useEffect(() => {
 		setEditCommentContent(comment.commentContent);
-		setCurrComment(comment.commentID);
+		// setCurrComment(comment.commentID);
 	}, [comment]);
 
 	const onHandleToggleEdit = () => {
@@ -16,16 +16,15 @@ const Comment = ({ comment }) => {
 		setEditCommentContent(editCommentContent);
 	};
 
-	const onHandleEditComment = async () => {
+	const onHandleEditComment = async (commentID) => {
 		const token = localStorage.getItem("authToken");
 		if (!token) return;
 
 		const updatedCommentObj = {
 			content: editCommentContent,
-			commentID: currComment,
 		};
 
-		await updateComment(updatedCommentObj, token);
+		await updateComment(commentID, updatedCommentObj, token);
 		setEditToggle(false);
 	};
 
@@ -61,7 +60,7 @@ const Comment = ({ comment }) => {
 					<div className="flex justify-end items-center">
 						<button
 							className="bg-indigo-600 text-gray-200 text-sm py-1 px-2 rounded-lg"
-							onClick={onHandleEditComment}
+							onClick={() => onHandleEditComment(comment.commentID)}
 						>
 							Submit
 						</button>

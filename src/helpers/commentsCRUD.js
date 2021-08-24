@@ -11,10 +11,10 @@ export const createComment = async (commentObj, token) => {
 	return data;
 };
 
-export const updateComment = async (commentId, commentObj, token) => {
+export const updateComment = async (commentId, editCommentObj, token) => {
 	const res = await fetch(`http://localhost:5000/comments/${commentId}`, {
 		method: "PUT",
-		body: JSON.stringify(commentObj),
+		body: JSON.stringify(editCommentObj),
 		headers: {
 			"Content-Type": "application/json; charset=UTF-8",
 			auth: token,

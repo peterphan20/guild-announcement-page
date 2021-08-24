@@ -19,7 +19,6 @@ const CommentsList = ({ currArticleData }) => {
 			articleID: id,
 		};
 		await createComment(commentObj, token);
-		console.log("successfully created comment");
 	};
 
 	const commentsList = currArticleData.comments?.map((comment, idx) => {
@@ -42,7 +41,6 @@ const CommentsList = ({ currArticleData }) => {
 				value={content}
 				onChange={(e) => setContent(e.target.value)}
 				className="bg-gray-200 text-sm text-gray-900 flex-grow-0 flex-shrink-0 border-solid border border-gray-300 p-2 w-full h-24 outline-none resize-none focus:ring-2 focus:ring-blue-500"
-				disabled={!userDetails}
 			/>
 			<button className="bg-indigo-600 mb-8 py-2 w-full" onClick={onHandleCommentCreate}>
 				Comment
