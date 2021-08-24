@@ -5,16 +5,16 @@ import { userDetailsContext } from "../context/UserDetailsProvider";
 import { createComment } from "../helpers/commentsCRUD";
 
 const CommentsList = ({ currArticleData }) => {
-	const [commentContent, setCommentContent] = useState("");
+	const [content, setContent] = useState("");
 	const [userDetails] = useContext(userDetailsContext);
 	const { id } = useParams();
 
-	const handleCommentCreate = async () => {
+	const onHandleCommentCreate = async () => {
 		const token = localStorage.getItem("authToken");
 		if (!token) return;
 
 		const commentObj = {
-			content: commentContent,
+			content: content,
 			authorID: userDetails,
 			articleID: id,
 		};
@@ -23,28 +23,28 @@ const CommentsList = ({ currArticleData }) => {
 	};
 
 	const commentsList = currArticleData.comments?.map((comment, idx) => {
-		return comment.content ? (
-			<Comment key={comment.commentID} comment={comment} commentContent={commentContent} />
+		return comment.commentContent ? (
+			<Comment key={comment.commentID} comment={comment} />
 		) : (
 			<p key={idx} className="text-sm font-text pb-7">
-				Leave a comment to start a discussion
+				Leave a comment to start a discussion!
 			</p>
 		);
 	});
 
 	return (
-		<section className="flex flex-col w-full h-full">
-			<p className="font-logo font-semibold border-b-2 border-gray-300 px-3 py-1 mt-7 mb-7 w-full">
+		<section className="flex flex-col mb-10 w-full h-full">
+			<p className="font-logo font-semibold text-gray-200 border-b border-gray-500 px-3 py-1 mt-7 mb-7 w-full">
 				Start a Discussion
 			</p>
 			<textarea
-				placeholder={!userDetails ? "Please sign in to comment" : "Add a comment"}
-				value={commentContent}
-				onChange={(e) => setCommentContent(e.target.value)}
-				className="text-sm text-gray-900 flex-grow-0 flex-shrink-0 border-solid border border-gray-300 p-2 w-full h-30 outline-none resize-none focus:ring-2 focus:ring-blue-500"
+				placeholder="Add a comment"
+				value={content}
+				onChange={(e) => setContent(e.target.value)}
+				className="bg-gray-200 text-sm text-gray-900 flex-grow-0 flex-shrink-0 border-solid border border-gray-300 p-2 w-full h-24 outline-none resize-none focus:ring-2 focus:ring-blue-500"
 				disabled={!userDetails}
 			/>
-			<button className="bg-indigo-600 mb-8 h-8" onClick={handleCommentCreate}>
+			<button className="bg-indigo-600 mb-8 py-2 w-full" onClick={onHandleCommentCreate}>
 				Comment
 			</button>
 			<div>{commentsList}</div>

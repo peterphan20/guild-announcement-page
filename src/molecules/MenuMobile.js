@@ -1,7 +1,11 @@
-import React from "react";
+import { useContext } from "react";
 import MobileMenuAnchor from "../atoms/MenuAnchorMobile";
+import { userDetailsContext } from "../context/UserDetailsProvider";
 
 const MobileMenu = ({ setOpen, isOpen }) => {
+	// eslint-disable-next-line
+	const [userDetails, setUserDetails] = useContext(userDetailsContext);
+
 	const handleClick = (id) => {
 		setOpen(false);
 		setTimeout(() => {
@@ -10,6 +14,13 @@ const MobileMenu = ({ setOpen, isOpen }) => {
 	};
 
 	const handlePageChangeClick = () => {
+		setOpen(false);
+		window.scrollTo(0, 0);
+	};
+
+	const handleLogout = () => {
+		setUserDetails({});
+		localStorage.removeItem("authToken");
 		setOpen(false);
 		window.scrollTo(0, 0);
 	};
@@ -34,8 +45,27 @@ const MobileMenu = ({ setOpen, isOpen }) => {
 				link="/create-article-page"
 				clickHandler={handlePageChangeClick}
 			/>
+			{/* {!token ? (
+				<>
+				<MobileMenuAnchor text="Login" link="/login" clickHandler={handlePageChangeClick} />
+				<MobileMenuAnchor text="Sign Up" link="/sign-up" clickHandler={handlePageChangeClick} />
+				</>
+			) : (
+				<button
+					className="text-xl font-logo font-semibold border-b-2 border-indigo-200 py-2 px-3 mt-8"
+					onClick={handleLogout}
+				>
+					Sign Out
+				</button>
+			)} */}
 			<MobileMenuAnchor text="Login" link="/login" clickHandler={handlePageChangeClick} />
 			<MobileMenuAnchor text="Sign Up" link="/sign-up" clickHandler={handlePageChangeClick} />
+			<button
+				className="text-xl font-logo font-semibold border-b-2 border-indigo-200 py-2 px-3 mt-8"
+				onClick={handleLogout}
+			>
+				Sign Out
+			</button>
 		</nav>
 	);
 };

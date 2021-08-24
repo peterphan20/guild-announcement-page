@@ -10,9 +10,7 @@ const UserDashboard = () => {
 		const token = localStorage.getItem("authToken");
 		if (!token) return;
 
-		console.log(userDetails);
 		await deleteUser(userDetails, token);
-		console.log(`${userDetails} has been deleted`);
 	};
 
 	return (

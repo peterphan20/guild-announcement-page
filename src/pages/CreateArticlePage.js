@@ -10,7 +10,7 @@ const CreateArticlePage = () => {
 	const [articleVideo, setArticleVideo] = useState("");
 	const [userDetails] = useContext(userDetailsContext);
 
-	const handleArticleSubmit = async () => {
+	const onHandleArticleSubmit = async () => {
 		const token = localStorage.getItem("authToken");
 		if (!token) return;
 
@@ -22,8 +22,7 @@ const CreateArticlePage = () => {
 			authorID: userDetails,
 		};
 
-		const response = await createArticle(articleObj, token);
-		console.log("article successfully created", response);
+		await createArticle(articleObj, token);
 	};
 
 	return (
@@ -49,7 +48,7 @@ const CreateArticlePage = () => {
 				value={articleContent}
 				onChange={(e) => setArticleContent(e.target.value)}
 			/>
-			<button className="bg-indigo-600 mb-8 w-full h-12 -my-2" onClick={handleArticleSubmit}>
+			<button className="bg-indigo-600 mb-8 w-full h-12 -my-2" onClick={onHandleArticleSubmit}>
 				Submit
 			</button>
 		</div>

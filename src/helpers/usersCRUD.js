@@ -30,7 +30,7 @@ export const updateUser = async (userId, userObj, token) => {
 		body: JSON.stringify(userObj),
 		headers: {
 			"Content-Type": "application/json; charset=UTF-8",
-			Authorization: `Bearer ${token}`,
+			auth: token,
 		},
 	});
 	const data = await res.json();
@@ -42,7 +42,7 @@ export const deleteUser = async (userId, token) => {
 		method: "DELETE",
 		headers: {
 			"Content-Type": "application/json; charset=UTF-8",
-			Authorization: `Bearer ${token}`,
+			auth: token,
 		},
 	});
 	const data = res.json();
