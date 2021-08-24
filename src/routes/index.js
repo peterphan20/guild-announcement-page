@@ -28,14 +28,14 @@ export const routes = [
 		component: SignUpForm,
 	},
 	{
-		path: "/articles/:id",
+		path: "/articles/:articleID",
 		exact: true,
 		component: ArticlePage,
 	},
 	{
 		path: "/create-article-page",
 		exact: true,
-		component: CreateArticlePage
+		component: CreateArticlePage,
 	},
 	{
 		path: "/user-dashboard",

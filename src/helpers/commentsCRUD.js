@@ -11,8 +11,8 @@ export const createComment = async (commentObj, token) => {
 	return data;
 };
 
-export const updateComment = async (commentId, editCommentObj, token) => {
-	const res = await fetch(`http://localhost:5000/comments/${commentId}`, {
+export const updateComment = async (commentID, editCommentObj, token) => {
+	const res = await fetch(`http://localhost:5000/comments/${commentID}`, {
 		method: "PUT",
 		body: JSON.stringify(editCommentObj),
 		headers: {
@@ -24,8 +24,8 @@ export const updateComment = async (commentId, editCommentObj, token) => {
 	return data;
 };
 
-export const deleteComment = async (commentId, token) => {
-	const res = await fetch(`http://localhost:5000/comments/${commentId}`, {
+export const deleteComment = async (commentID, token) => {
+	const res = await fetch(`http://localhost:5000/comments/${commentID}`, {
 		method: "DELETE",
 		headers: {
 			"Content-Type": "application/json; charset=UTF-8",

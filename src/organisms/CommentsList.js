@@ -7,7 +7,7 @@ import { createComment } from "../helpers/commentsCRUD";
 const CommentsList = ({ currArticleData }) => {
 	const [content, setContent] = useState("");
 	const [userDetails] = useContext(userDetailsContext);
-	const { id } = useParams();
+	const { articleID } = useParams();
 
 	const onHandleCommentCreate = async () => {
 		const token = localStorage.getItem("authToken");
@@ -16,7 +16,7 @@ const CommentsList = ({ currArticleData }) => {
 		const commentObj = {
 			content: content,
 			authorID: userDetails,
-			articleID: id,
+			articleID: articleID,
 		};
 		await createComment(commentObj, token);
 	};

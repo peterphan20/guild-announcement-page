@@ -2,13 +2,11 @@ import { useState, useEffect } from "react";
 import { deleteComment, updateComment } from "../helpers/commentsCRUD";
 
 const Comment = ({ comment }) => {
-	// const [currComment, setCurrComment] = useState("");
 	const [editCommentContent, setEditCommentContent] = useState("");
 	const [editToggle, setEditToggle] = useState(false);
 
 	useEffect(() => {
 		setEditCommentContent(comment.commentContent);
-		// setCurrComment(comment.commentID);
 	}, [comment]);
 
 	const onHandleToggleEdit = () => {

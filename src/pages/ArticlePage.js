@@ -7,12 +7,11 @@ import { deleteArticle, getArticle } from "../helpers/articlesCRUD";
 
 const ArticlePage = () => {
 	const [currArticleData, setCurrArticleData] = useState([]);
-
-	const { id } = useParams();
+	const { articleID } = useParams();
 
 	useEffect(() => {
 		async function fetchData() {
-			const data = await getArticle(id);
+			const data = await getArticle(articleID);
 			if (!data || !data[0]) {
 				window.location.href = "http://localhost:3000/";
 			} else {
@@ -21,13 +20,13 @@ const ArticlePage = () => {
 		}
 		fetchData();
 		return () => {};
-	}, [id]);
+	}, [articleID]);
 
 	const onHandleDeleteArticle = async () => {
 		const token = localStorage.getItem("authToken");
 		if (!token) return;
 
-		await deleteArticle(id, token);
+		await deleteArticle(articleID, token);
 	};
 
 	return (
