@@ -3,8 +3,8 @@ import MobileMenuAnchor from "../atoms/MenuAnchorMobile";
 import { userDetailsContext } from "../context/UserDetailsProvider";
 
 const MobileMenu = ({ setOpen, isOpen }) => {
-	// eslint-disable-next-line
 	const [userDetails, setUserDetails] = useContext(userDetailsContext);
+	console.log(userDetails);
 
 	const handleClick = (id) => {
 		setOpen(false);
@@ -35,37 +35,26 @@ const MobileMenu = ({ setOpen, isOpen }) => {
 			<MobileMenuAnchor text="Articles" link="/" clickHandler={() => handleClick("articles")} />
 			<MobileMenuAnchor text="Gallery" link="/" clickHandler={() => handleClick("gallery")} />
 			<MobileMenuAnchor text="About Us" link="/about-us" clickHandler={handlePageChangeClick} />
-			<MobileMenuAnchor
-				text="Profile"
-				link="/user-dashboard"
-				clickHandler={handlePageChangeClick}
-			/>
-			<MobileMenuAnchor
-				text="Add article"
-				link="/create-article-page"
-				clickHandler={handlePageChangeClick}
-			/>
-			{/* {!token ? (
+			{!userDetails ? (
 				<>
-				<MobileMenuAnchor text="Login" link="/login" clickHandler={handlePageChangeClick} />
-				<MobileMenuAnchor text="Sign Up" link="/sign-up" clickHandler={handlePageChangeClick} />
+					<MobileMenuAnchor text="Login" link="/login" clickHandler={handlePageChangeClick} />
+					<MobileMenuAnchor text="Sign Up" link="/sign-up" clickHandler={handlePageChangeClick} />
 				</>
 			) : (
-				<button
-					className="text-xl font-logo font-semibold border-b-2 border-indigo-200 py-2 px-3 mt-8"
-					onClick={handleLogout}
-				>
-					Sign Out
-				</button>
-			)} */}
-			<MobileMenuAnchor text="Login" link="/login" clickHandler={handlePageChangeClick} />
-			<MobileMenuAnchor text="Sign Up" link="/sign-up" clickHandler={handlePageChangeClick} />
-			<button
-				className="text-xl font-logo font-semibold border-b-2 border-indigo-200 py-2 px-3 mt-8"
-				onClick={handleLogout}
-			>
-				Sign Out
-			</button>
+				<>
+					<MobileMenuAnchor
+						text="Profile"
+						link="/user-dashboard"
+						clickHandler={handlePageChangeClick}
+					/>
+					<button
+						className="text-xl font-logo font-semibold border-b-2 border-indigo-200 py-2 px-3 mt-8"
+						onClick={handleLogout}
+					>
+						Sign Out
+					</button>
+				</>
+			)}
 		</nav>
 	);
 };

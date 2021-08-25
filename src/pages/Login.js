@@ -26,7 +26,6 @@ const Login = () => {
 			localStorage.setItem("authToken", response.token);
 			setUserDetails(response.userId);
 			setAuthResponse("");
-			console.log("you are signed in");
 			history.push("/");
 		} else {
 			// TODO: if not successful, then tell users invalid sign in
