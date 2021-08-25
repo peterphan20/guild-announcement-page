@@ -42,7 +42,7 @@ const ArticlePage = () => {
 			<div className="flex justify-end self-center pb-4">
 				<button
 					className="font-text text-red-600 text-xs border border-gray-500 rounded-lg py-1 px-2"
-					onClick={onHandleDeleteArticle}
+					onClick={() => onHandleDeleteArticle(currArticleData.articleID)}
 				>
 					Delete article
 				</button>

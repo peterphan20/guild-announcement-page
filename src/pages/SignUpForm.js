@@ -8,7 +8,6 @@ const SignUpForm = () => {
 	const [signUpusername, setSignUpusername] = useState("");
 	const [signUppassword, setsignUppassword] = useState("");
 	const [authResponse, setAuthResponse] = useState("");
-	// eslint-disable-next-line
 	const history = useHistory();
 
 	const onHandleUserCreate = async () => {

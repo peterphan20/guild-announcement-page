@@ -8,7 +8,7 @@ const MobileMenuAnchor = ({ link, text, clickHandler }) => {
 				to={link}
 				className="text-xl font-logo font-semibold border-b-2 border-indigo-200 py-2 px-3 mt-8"
 				onClick={clickHandler}
-				label={`Click the anchor link to jump to the ${text} section of the page`}
+				aria-label={`Click the anchor link to jump to the ${text} section of the page`}
 			>
 				{text}
 			</Link>

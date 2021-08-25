@@ -24,21 +24,8 @@ export const createUser = async (userObj) => {
 	return data;
 };
 
-export const updateUser = async (userID, userObj, token) => {
-	const res = await fetch(`http://localhost:5000/users/${userID}`, {
-		method: "PUT",
-		body: JSON.stringify(userObj),
-		headers: {
-			"Content-Type": "application/json; charset=UTF-8",
-			auth: token,
-		},
-	});
-	const data = await res.json();
-	return data;
-};
-
 export const deleteUser = async (userID, token) => {
-	const res = await fetch(`http://localhost:5000/articles/${userID}`, {
+	const res = await fetch(`http://localhost:5000/users/${userID}`, {
 		method: "DELETE",
 		headers: {
 			"Content-Type": "application/json; charset=UTF-8",

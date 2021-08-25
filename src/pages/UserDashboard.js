@@ -1,9 +1,10 @@
-import { useState, useContext } from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+
 import { userDetailsContext } from "../context/UserDetailsProvider";
 import { deleteUser } from "../helpers/usersCRUD";
 
 const UserDashboard = () => {
-	const [editUsername, setEditUsername] = useState("");
 	const [userDetails] = useContext(userDetailsContext);
 
 	const onHandleDeleteUser = async () => {
@@ -15,15 +16,14 @@ const UserDashboard = () => {
 
 	return (
 		<div className="bg-darkBackground text-gray-100 pt-24 px-5 w-full h-screen">
-			<label htmlFor="name">Name</label>
-			<input
-				type="text"
-				className="bg-gray-100 text-gray-900 text-md outline-none py-3 px-2 w-full focus:ring-2 focus:ring-blue-500"
-				value={editUsername}
-				onChange={(e) => setEditUsername(e.target.value)}
-				require="true"
-				autoFocus
-			/>
+			<h1 className="font-text text-gray-200 text-2xl border-b border-gray-500 border-solid pb-1 mb-3">
+				Want to add an entry?
+			</h1>
+			<Link to="/create-article-page" aria-label="Click here to add an entry">
+				<button className="bg-green-600 font-text text-gray-200 text-sm rounded-lg py-1 px-2 mb-10">
+					Create an article
+				</button>
+			</Link>
 			<h1 className="font-text font-bold text-red-600 text-2xl border-b border-gray-500 border-solid pb-1 mb-3">
 				Delete account
 			</h1>
