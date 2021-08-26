@@ -1,5 +1,9 @@
+import { config } from "../config";
+
+const { API_URL } = config;
+
 export const createComment = async (commentObj, token) => {
-	const res = await fetch("http://localhost:5000/comments", {
+	const res = await fetch(`${API_URL}/comments`, {
 		method: "POST",
 		body: JSON.stringify(commentObj),
 		headers: {
@@ -12,7 +16,7 @@ export const createComment = async (commentObj, token) => {
 };
 
 export const updateComment = async (commentID, editCommentObj, token) => {
-	const res = await fetch(`http://localhost:5000/comments/${commentID}`, {
+	const res = await fetch(`${API_URL}/comments/${commentID}`, {
 		method: "PUT",
 		body: JSON.stringify(editCommentObj),
 		headers: {
@@ -25,7 +29,7 @@ export const updateComment = async (commentID, editCommentObj, token) => {
 };
 
 export const deleteComment = async (commentID, token) => {
-	const res = await fetch(`http://localhost:5000/comments/${commentID}`, {
+	const res = await fetch(`${API_URL}/comments/${commentID}`, {
 		method: "DELETE",
 		headers: {
 			"Content-Type": "application/json; charset=UTF-8",
