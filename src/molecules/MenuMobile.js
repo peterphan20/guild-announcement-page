@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import MobileMenuAnchor from "../atoms/MenuAnchorMobile";
+import MenuAnchorMobile from "../atoms/MenuAnchorMobile";
 import { userDetailsContext } from "../context/UserDetailsProvider";
 
-const MobileMenu = ({ setOpen, isOpen }) => {
+const MenuMobile = ({ setOpen, isOpen }) => {
+	// eslint-disable-next-line
 	const [userDetails, setUserDetails] = useContext(userDetailsContext);
-	console.log(userDetails);
 
 	const handleClick = (id) => {
 		setOpen(false);
@@ -25,24 +25,26 @@ const MobileMenu = ({ setOpen, isOpen }) => {
 		window.scrollTo(0, 0);
 	};
 
+	const token = localStorage.getItem("authToken");
+
 	return (
 		<nav
-			className={`fixed top-0 left-0 z-10 w-full h-screen bg-indigo-700 transition-all duration-500 ease-out transform flex flex-col justify-center items-center ${
+			className={`flex flex-col justify-center items-center fixed top-0 left-0 z-10 w-full h-screen bg-indigo-700 transition-all duration-500 ease-out transform ${
 				isOpen ? "opacity-95 translate-y-0" : "opacity-0 -translate-y-full"
 			}`}
 		>
-			<MobileMenuAnchor text="Home" link="/" clickHandler={() => handleClick("home")} />
-			<MobileMenuAnchor text="Articles" link="/" clickHandler={() => handleClick("articles")} />
-			<MobileMenuAnchor text="Gallery" link="/" clickHandler={() => handleClick("gallery")} />
-			<MobileMenuAnchor text="About Us" link="/about-us" clickHandler={handlePageChangeClick} />
-			{!userDetails ? (
+			<MenuAnchorMobile text="Home" link="/" clickHandler={() => handleClick("home")} />
+			<MenuAnchorMobile text="Articles" link="/" clickHandler={() => handleClick("articles")} />
+			<MenuAnchorMobile text="Gallery" link="/" clickHandler={() => handleClick("gallery")} />
+			<MenuAnchorMobile text="About Us" link="/about-us" clickHandler={handlePageChangeClick} />
+			{!token ? (
 				<>
-					<MobileMenuAnchor text="Login" link="/login" clickHandler={handlePageChangeClick} />
-					<MobileMenuAnchor text="Sign Up" link="/sign-up" clickHandler={handlePageChangeClick} />
+					<MenuAnchorMobile text="Login" link="/login" clickHandler={handlePageChangeClick} />
+					<MenuAnchorMobile text="Sign Up" link="/sign-up" clickHandler={handlePageChangeClick} />
 				</>
 			) : (
 				<>
-					<MobileMenuAnchor
+					<MenuAnchorMobile
 						text="Profile"
 						link="/user-dashboard"
 						clickHandler={handlePageChangeClick}
@@ -59,4 +61,4 @@ const MobileMenu = ({ setOpen, isOpen }) => {
 	);
 };
 
-export default MobileMenu;
+export default MenuMobile;

@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { userDetailsContext } from "../context/UserDetailsProvider";
 import { deleteComment, updateComment } from "../helpers/commentsCRUD";
 
 const Comment = ({ comment }) => {
 	const [editCommentContent, setEditCommentContent] = useState("");
 	const [editToggle, setEditToggle] = useState(false);
+	const [userDetails] = useContext(userDetailsContext);
 
 	useEffect(() => {
 		setEditCommentContent(comment.commentContent);
@@ -33,6 +35,16 @@ const Comment = ({ comment }) => {
 		await deleteComment(commentID, token);
 	};
 
+	const renderedButtons =
+		userDetails === comment.commentAuthorID ? (
+			<div className="flex gap-4 text-xs">
+				<button onClick={() => onHandleToggleEdit(comment.commentID)}>Edit</button>
+				<button onClick={() => onHandleDeleteComment(comment.commentID)}>Delete</button>
+			</div>
+		) : (
+			""
+		);
+
 	const date = new Date(comment.createdAt);
 	return (
 		<div className="pb-7">
@@ -43,10 +55,7 @@ const Comment = ({ comment }) => {
 			{!editToggle ? (
 				<div>
 					<p className="text-sm pb-3">{comment.commentContent}</p>
-					<div className="flex gap-4 text-xs">
-						<button onClick={() => onHandleToggleEdit(comment.commentID)}>Edit</button>
-						<button onClick={() => onHandleDeleteComment(comment.commentID)}>Delete</button>
-					</div>
+					{renderedButtons}
 				</div>
 			) : (
 				<div className="pt-3 w-full">

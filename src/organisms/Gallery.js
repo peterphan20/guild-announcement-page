@@ -11,13 +11,17 @@ const renderedImage = imageURLList.map((image, idx) => {
 
 const Gallery = () => {
 	return (
-		<section className="w-full h-full px-4">
-			<span id="gallery" className="block relative -top-24" />
-			<h1 className="flex justify-center font-headers font-semibold border-b-2 border-indigo-200 px-3 py-1 mt-7 mb-7">
-				Gallery
-			</h1>
-			<Carousel showThumbs={false}>{renderedImage}</Carousel>
-		</section>
+		<div className="pb-5 px-4 w-full h-full lg:pb-12 lg:px-56">
+			<section>
+				<span id="gallery" className="block relative -top-24 lg:-top-28" />
+				<h1 className="flex justify-center font-headers font-semibold border-b-2 border-indigo-200 px-3 py-1 mt-7 mb-7 lg:text-3xl lg:mb-10">
+					Gallery
+				</h1>
+				<div className="px-0 lg:px-20">
+					<Carousel showThumbs={false}>{renderedImage}</Carousel>
+				</div>
+			</section>
+		</div>
 	);
 };
 
