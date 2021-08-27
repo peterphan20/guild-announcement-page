@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { userDetailsContext } from "../context/UserDetailsProvider";
 import { deleteComment, updateComment } from "../helpers/commentsCRUD";
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, currArticleData, setCurrArticleData }) => {
 	const [editCommentContent, setEditCommentContent] = useState("");
 	const [editToggle, setEditToggle] = useState(false);
 	const [userDetails] = useContext(userDetailsContext);
@@ -10,6 +10,7 @@ const Comment = ({ comment }) => {
 	useEffect(() => {
 		setEditCommentContent(comment.commentContent);
 	}, [comment]);
+
 
 	const onHandleToggleEdit = () => {
 		setEditToggle(true);
@@ -32,7 +33,12 @@ const Comment = ({ comment }) => {
 		const token = localStorage.getItem("authToken");
 		if (!token) return;
 
+		const updatedList = currArticleData.comments.filter((comment) => {
+			return comment.commentID !== commentID;
+		});
+
 		await deleteComment(commentID, token);
+		setCurrArticleData(updatedList);
 	};
 
 	const renderedButtons =
@@ -47,14 +53,16 @@ const Comment = ({ comment }) => {
 
 	const date = new Date(comment.createdAt);
 	return (
-		<div className="pb-7">
+		<div className="pb-7 lg:pb-10">
 			<div className="flex justify-start items-center gap-3">
-				<p className="text-lg font-text">{comment.commentAuthor}</p>
-				<p className="text-xs text-gray-300 font-text">{date.toString().substring(3, 11)}</p>
+				<p className="text-lg font-text lg:text-xl">{comment.commentAuthor}</p>
+				<p className="text-xs text-gray-300 font-text lg:text-base">
+					{date.toString().substring(3, 11)}
+				</p>
 			</div>
 			{!editToggle ? (
 				<div>
-					<p className="text-sm pb-3">{comment.commentContent}</p>
+					<p className="text-sm pb-3 lg:text-base">{comment.commentContent}</p>
 					{renderedButtons}
 				</div>
 			) : (

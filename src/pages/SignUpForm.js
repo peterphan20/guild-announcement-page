@@ -57,7 +57,7 @@ const SignUpForm = () => {
 					onChange={(e) => setsignUppassword(e.target.value)}
 				/>
 				<button
-					className="bg-indigo-600 text-md rounded-lg p-1 mt-2 mb-3 w-full"
+					className="bg-indigo-600 text-base rounded-lg p-1 mt-2 mb-3 w-full"
 					onClick={onHandleUserCreate}
 				>
 					Sign In

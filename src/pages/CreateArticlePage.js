@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import InputFieldArticleCreation from "../atoms/InputFieldArticleCreation";
 import { userDetailsContext } from "../context/UserDetailsProvider";
 import { createArticle } from "../helpers/articlesCRUD";
@@ -9,6 +10,7 @@ const CreateArticlePage = () => {
 	const [articleImage, setArticleImage] = useState("");
 	const [articleVideo, setArticleVideo] = useState("");
 	const [userDetails] = useContext(userDetailsContext);
+	const history = useHistory();
 
 	const onHandleArticleSubmit = async () => {
 		const token = localStorage.getItem("authToken");
@@ -22,11 +24,16 @@ const CreateArticlePage = () => {
 			authorID: userDetails,
 		};
 
-		await createArticle(articleObj, token);
+		const response = await createArticle(articleObj, token);
+		if (response.code === 201) {
+			history.push("/");
+		} else {
+			return;
+		}
 	};
 
 	return (
-		<div className="bg-darkBackground pt-20 w-full h-screen">
+		<div className="bg-darkBackground pt-20 w-full h-screen lg:h-full">
 			<InputFieldArticleCreation
 				text="Title"
 				value={articleTitle}
@@ -43,7 +50,7 @@ const CreateArticlePage = () => {
 				onChange={(e) => setArticleVideo(e.target.value)}
 			/>
 			<textarea
-				className="bg-gray-100 text-md text-gray-900 flex-grow-0 flex-shrink-0 border-solid border border-gray-300 p-2 w-full h-4/6 outline-none resize-none focus:ring-2 focus:ring-blue-500"
+				className="bg-gray-100 text-base text-gray-900 flex-grow-0 flex-shrink-0 border-solid border border-gray-300 p-2 w-full h-96 outline-none resize-none focus:ring-2 focus:ring-blue-500"
 				placeholder="Content"
 				value={articleContent}
 				onChange={(e) => setArticleContent(e.target.value)}

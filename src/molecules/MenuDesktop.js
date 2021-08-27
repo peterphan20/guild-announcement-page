@@ -35,7 +35,7 @@ const DesktopMenu = () => {
 				<>
 					<MenuAnchorDesktop text="Profile" link="/user-dashboard" />
 					<button
-						className="text-xl font-logo font-semibold py-1 px-3 border-b border-gray-800 hover:border-b hover:border-indigo-200 hover:text-indigo-600"
+						className="text-lg font-logo font-semibold py-1 px-3 border-b border-gray-800 hover:border-b hover:border-indigo-200 hover:text-indigo-600"
 						onClick={handleLogout}
 					>
 						Sign Out

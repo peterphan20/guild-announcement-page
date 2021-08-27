@@ -7,7 +7,7 @@ const Hero = () => {
 			className="mt-20 mb-8 pt-20 pb-20 px-8 bg-cover bg-gray-900 lg:mb-16 lg:pt-52 lg:pb-32 lg:px-56 "
 			style={{ backgroundImage: `url(${background})` }}
 		>
-			<span id="home" className="block relative -top-36 lg:-top-60" />
+			<span id="home" className="block relative -top-36 lg:-top-72" />
 			<h1 className="font-logo font-semibold text-3xl font-bold pb-1 lg:text-5xl">
 				Welcome To Eldridge
 			</h1>
@@ -16,7 +16,7 @@ const Hero = () => {
 				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
 				laboris nisi ut aliquip ex ea commodo consequat.
 			</h2>
-			<button className="bg-indigo-600 font-logo text-md rounded py-3 px-6">
+			<button className="bg-indigo-600 font-logo text-base rounded py-3 px-6">
 				<a href="https://guildroster.netlify.app/" target="_blank" rel="noreferrer">
 					Meet The Roster
 				</a>

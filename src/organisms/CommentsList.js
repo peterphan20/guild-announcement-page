@@ -5,7 +5,7 @@ import Comment from "../molecules/Comment";
 import { userDetailsContext } from "../context/UserDetailsProvider";
 import { createComment } from "../helpers/commentsCRUD";
 
-const CommentsList = ({ currArticleData }) => {
+const CommentsList = ({ currArticleData, setCurrArticleData }) => {
 	const [content, setContent] = useState("");
 	const [userDetails] = useContext(userDetailsContext);
 	const { articleID } = useParams();
@@ -22,15 +22,22 @@ const CommentsList = ({ currArticleData }) => {
 		await createComment(commentObj, token);
 	};
 
-	const commentsList = currArticleData.comments?.map((comment, idx) => {
-		return comment.commentContent ? (
-			<Comment key={comment.commentID} comment={comment} />
-		) : (
-			<p key={idx} className="text-sm font-text pb-7">
-				Leave a comment to start a discussion!
-			</p>
-		);
-	});
+	const commentsList = currArticleData.comments
+		?.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
+		.map((comment, idx) => {
+			return comment.commentContent ? (
+				<Comment
+					key={comment.commentID}
+					comment={comment}
+					currArticleData={currArticleData}
+					setCurrArticleData={setCurrArticleData}
+				/>
+			) : (
+				<p key={idx} className="text-sm font-text pb-7">
+					Leave a comment to start a discussion!
+				</p>
+			);
+		});
 
 	return (
 		<div>
@@ -42,9 +49,9 @@ const CommentsList = ({ currArticleData }) => {
 					placeholder="Add a comment"
 					value={content}
 					onChange={(e) => setContent(e.target.value)}
-					className="bg-gray-200 text-sm text-gray-900 flex-grow-0 flex-shrink-0 border-solid border border-gray-300 p-2 w-full h-24 outline-none resize-none focus:ring-2 focus:ring-blue-500"
+					className="bg-gray-200 text-sm text-gray-900 flex-grow-0 flex-shrink-0 border-solid border border-gray-300 p-2 w-full h-24 outline-none resize-none focus:ring-2 focus:ring-blue-500 lg:text-lg h-36"
 				/>
-				<button className="bg-indigo-600 mb-8 py-2 w-full" onClick={onHandleCommentCreate}>
+				<button className="bg-indigo-600 mb-8 py-2 w-full lg:py-4" onClick={onHandleCommentCreate}>
 					Comment
 				</button>
 				<div>{commentsList}</div>

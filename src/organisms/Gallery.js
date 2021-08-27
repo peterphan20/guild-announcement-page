@@ -17,7 +17,7 @@ const Gallery = () => {
 				<h1 className="flex justify-center font-headers font-semibold border-b-2 border-indigo-200 px-3 py-1 mt-7 mb-7 lg:text-3xl lg:mb-10">
 					Gallery
 				</h1>
-				<div className="px-0 lg:px-20">
+				<div className="px-0 lg:px-36">
 					<Carousel showThumbs={false}>{renderedImage}</Carousel>
 				</div>
 			</section>

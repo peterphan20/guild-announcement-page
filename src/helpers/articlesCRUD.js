@@ -24,7 +24,7 @@ export const createArticle = async (articlesObj, token) => {
 		},
 	});
 	const data = res.json();
-	return data.rows;
+	return data;
 };
 
 export const updateArticle = async (articleID, articlesObj, token) => {
@@ -37,7 +37,7 @@ export const updateArticle = async (articleID, articlesObj, token) => {
 		},
 	});
 	const data = res.json();
-	return data.rows;
+	return data;
 };
 
 export const deleteArticle = async (articleID, token) => {
@@ -49,5 +49,5 @@ export const deleteArticle = async (articleID, token) => {
 		},
 	});
 	const data = res.json();
-	return data.rows;
+	return data;
 };
