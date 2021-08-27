@@ -22,7 +22,7 @@ const ArticlePage = () => {
 		}
 		fetchData();
 		return () => {};
-	}, [articleID]);
+	}, [articleID, history]);
 
 	const onHandleDeleteArticle = async () => {
 		const token = localStorage.getItem("authToken");
