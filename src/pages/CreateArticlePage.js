@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import InputFieldArticleCreation from "../atoms/InputFieldArticleCreation";
 import { userDetailsContext } from "../context/UserDetailsProvider";
@@ -11,6 +11,10 @@ const CreateArticlePage = () => {
 	const [articleVideo, setArticleVideo] = useState("");
 	const [userDetails] = useContext(userDetailsContext);
 	const history = useHistory();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	const onHandleArticleSubmit = async () => {
 		const token = localStorage.getItem("authToken");
@@ -33,7 +37,7 @@ const CreateArticlePage = () => {
 	};
 
 	return (
-		<div className="bg-darkBackground pt-20 w-full h-screen lg:h-full">
+		<div className="bg-dark_background pt-20 w-full h-screen min-h-full lg:h-full">
 			<InputFieldArticleCreation
 				text="Title"
 				value={articleTitle}

@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 import InputFieldLogin from "../atoms/InputFieldLogin";
-import logo from "../assets/logo5.png";
+import logo from "../assets/logo.png";
 import { userSignIn } from "../helpers/usersCRUD";
 import { userDetailsContext } from "../context/UserDetailsProvider";
 
@@ -13,6 +13,10 @@ const Login = () => {
 	// eslint-disable-next-line
 	const [userDetails, setUserDetails] = useContext(userDetailsContext);
 	const history = useHistory();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	const onHandleSignIn = async () => {
 		const userObj = {
@@ -36,9 +40,9 @@ const Login = () => {
 	};
 
 	return (
-		<div className="flex flex-col justify-center items-center bg-darkBackground -mt-24 px-8 w-full h-screen lg:-mt-32 lg:h-screen">
+		<div className="flex flex-col justify-center items-center bg-dark_background -mt-24 px-8 w-full h-screen min-h-screen lg:-mt-32 lg:h-screen">
 			<img src={logo} alt="Eldridge's logo" />
-			<h1 className="font-logo text-gray-200 text-2xl text-center pb-5 lg:text-4xl">
+			<h1 className="font-logo text-gray-200 text-2xl text-center pb-5 lg:text-3xl">
 				Login to Eldridge
 			</h1>
 			<div className="flex flex-col justify-center items-center font-text bg-gray-800 text-gray-200 rounded pb-8 pt-2 px-5 w-full lg:pb-16 lg:pt-6 lg:px-10 lg:w-96">

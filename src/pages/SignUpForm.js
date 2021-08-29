@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import logo from "../assets/logo5.png";
+import logo from "../assets/logo.png";
 import InputLoginMobile from "../atoms/InputFieldLogin";
 import { createUser } from "../helpers/usersCRUD";
 
@@ -10,6 +10,10 @@ const SignUpForm = () => {
 	const [signUppassword, setsignUppassword] = useState("");
 	const [authResponse, setAuthResponse] = useState("");
 	const history = useHistory();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	const onHandleUserCreate = async () => {
 		const userObj = {
@@ -29,9 +33,9 @@ const SignUpForm = () => {
 	};
 
 	return (
-		<div className="flex flex-col justify-center items-center bg-darkBackground -mt-24 px-8 w-full h-screen lg:-mt-32 lg:h-screen">
+		<div className="flex flex-col justify-center items-center bg-dark_background -mt-24 px-8 w-full h-screen lg:-mt-32 lg:h-screen">
 			<img src={logo} alt="Eldridge's logo" />
-			<h1 className="font-logo text-gray-200 text-2xl text-center pb-5 lg:text-2xl">
+			<h1 className="font-logo text-gray-200 text-2xl text-center pb-5 lg:text-3xl">
 				New to Eldridge? Sign Up Here!
 			</h1>
 			<div className="flex flex-col justify-center items-center font-text bg-gray-800 text-gray-200 rounded pb-8 pt-2 px-5 w-full lg:pb-16 lg:pt-6 lg:px-10 lg:w-96">

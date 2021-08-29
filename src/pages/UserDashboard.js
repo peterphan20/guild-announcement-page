@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { userDetailsContext } from "../context/UserDetailsProvider";
@@ -6,6 +6,10 @@ import { deleteUser } from "../helpers/usersCRUD";
 
 const UserDashboard = () => {
 	const [userDetails] = useContext(userDetailsContext);
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	const onHandleDeleteUser = async () => {
 		const token = localStorage.getItem("authToken");
@@ -15,7 +19,7 @@ const UserDashboard = () => {
 	};
 
 	return (
-		<div className="bg-darkBackground text-gray-100 pt-24 px-5 w-full h-screen">
+		<div className="bg-dark_background text-gray-100 pt-24 px-5 w-full h-screen">
 			<h1 className="font-text text-gray-200 text-2xl border-b border-gray-500 border-solid pb-1 mb-3">
 				Want to add an entry?
 			</h1>

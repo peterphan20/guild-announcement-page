@@ -4,16 +4,17 @@ import { getAllArticles } from "../helpers/articlesCRUD";
 
 const ArticlesList = () => {
 	const [articlesResults, setArticlesResults] = useState([]);
-	
+
 	useEffect(() => {
 		getAllArticles(setArticlesResults);
 	}, []);
 
-	const renderedArticles = articlesResults
-		.sort((a, b) => (a.created_at < b.created_at ? 1 : -1))
-		.map((article) => <Article key={article.article_id} article={article} />);
+	const renderedArticles = articlesResults.map((article) => (
+		<Article key={article.article_id} article={article} />
+	));
+
 	return (
-		<div className="flex flex-col justify-center items-center w-full h-full px-3 lg:px-56">
+		<div className="flex flex-col justify-center items-center w-full h-full min-h-full px-3 lg:px-56">
 			<span id="articles" className="block relative -top-16 lg:-top-24" />
 			<h1 className="text-center font-logo font-semibold border-b-2 border-indigo-200 px-3 py-1 mt-7 mb-7 w-full lg:text-3xl lg:mb-10">
 				Articles

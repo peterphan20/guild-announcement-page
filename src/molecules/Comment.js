@@ -11,9 +11,8 @@ const Comment = ({ comment, currArticleData, setCurrArticleData }) => {
 		setEditCommentContent(comment.commentContent);
 	}, [comment]);
 
-
 	const onHandleToggleEdit = () => {
-		setEditToggle(true);
+		setEditToggle((editToggle) => !editToggle);
 		setEditCommentContent(editCommentContent);
 	};
 
@@ -25,8 +24,10 @@ const Comment = ({ comment, currArticleData, setCurrArticleData }) => {
 			content: editCommentContent,
 		};
 
-		await updateComment(commentID, updatedCommentObj, token);
-		setEditToggle(false);
+		const response = await updateComment(commentID, updatedCommentObj, token);
+		if (response.code === 200) {
+			setEditToggle((editToggle) => !editToggle);
+		}
 	};
 
 	const onHandleDeleteComment = async (commentID) => {
@@ -45,7 +46,7 @@ const Comment = ({ comment, currArticleData, setCurrArticleData }) => {
 		userDetails === comment.commentAuthorID ? (
 			<div className="flex gap-4 text-xs">
 				<button onClick={() => onHandleToggleEdit(comment.commentID)}>Edit</button>
-				<button onClick={() => onHandleDeleteComment(comment.commentID)}>Delete</button>
+				<button onClick={onHandleDeleteComment}>Delete</button>
 			</div>
 		) : (
 			""
@@ -53,7 +54,7 @@ const Comment = ({ comment, currArticleData, setCurrArticleData }) => {
 
 	const date = new Date(comment.createdAt);
 	return (
-		<div className="pb-7 lg:pb-10">
+		<div className="pb-7 lg:pb-10 w-full h-full">
 			<div className="flex justify-start items-center gap-3">
 				<p className="text-lg font-text lg:text-xl">{comment.commentAuthor}</p>
 				<p className="text-xs text-gray-300 font-text lg:text-base">

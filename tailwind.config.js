@@ -4,7 +4,9 @@ module.exports = {
 	theme: {
 		extend: {
 			backgroundColor: (theme) => ({
-				darkBackground: "hsl(240, 5%, 10%)",
+				dark_background: "hsl(240, 5%, 10%)",
+				backdrop: "rgba(0, 0, 0, 0.3)",
+				modal_shadow: "rgba(0, 0, 0, 0.2)",
 			}),
 			fontFamily: {
 				logo: ["Overpass", "sans-serif"],
