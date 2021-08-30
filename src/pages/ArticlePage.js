@@ -13,8 +13,8 @@ const ArticlePage = () => {
 	const [userDetails] = useContext(userDetailsContext);
 	const { articleID } = useParams();
 	const history = useHistory();
+	// eslint-disable-next-line
 	const { toggle, showModal } = useModal();
-	console.log(showModal);
 
 	useEffect(() => {
 		async function fetchData() {
@@ -56,7 +56,7 @@ const ArticlePage = () => {
 		);
 
 	return (
-		<div className="bg-dark_background text-gray-200 w-full h-full pt-28 px-3 min-h-screen lg:pt-40 lg:px-80">
+		<div className="bg-dark_background text-gray-200 w-full h-full pt-28 px-3 min-h-full lg:pt-40 lg:px-80">
 			<Modal text="article" clickHandler={() => onHandleDeleteArticle(currArticleData.articleID)} />
 			<p className="font-logo text-xs pb-1 lg:text-lg">
 				{new Date(currArticleData.createdAt).toString().substring(3, 16)}
@@ -64,13 +64,9 @@ const ArticlePage = () => {
 			<h1 className="text-4xl font-headers break-words pb-2 lg:text-5xl">
 				{currArticleData.title}
 			</h1>
-			<p className="font-logo text-sm mb-12 lg:text-lg lg:-mb-32">
-				By {currArticleData.articleAuthor}
-			</p>
-			<Image src={currArticleData.imageUrl} className="py-0 px-0 lg:py-40 lg:px-80" />
-			<p className="font-text text-lg mt-10 pb-24 lg:text-xl lg:-mt-24">
-				{currArticleData.content}
-			</p>
+			<p className="font-logo text-sm mb-12 lg:text-lg">By {currArticleData.articleAuthor}</p>
+			<Image src={currArticleData.imageUrl} />
+			<p className="font-text text-lg mt-10 pb-24 lg:text-xl">{currArticleData.content}</p>
 			<CommentsList currArticleData={currArticleData} setCurrArticleData={setCurrArticleData} />
 			{renderedDeleteBtn}
 		</div>

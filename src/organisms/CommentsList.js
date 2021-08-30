@@ -19,27 +19,30 @@ const CommentsList = ({ currArticleData, setCurrArticleData }) => {
 			authorID: userDetails,
 			articleID: articleID,
 		};
-		await createComment(commentObj, token);
+
+		const response = await createComment(commentObj, token);
+		const newComment = response.rows[0];
+
+		const copyArticle = JSON.parse(JSON.stringify(currArticleData));
+		copyArticle.comments.push(newComment);
+
+		setCurrArticleData(copyArticle);
 	};
 
-	const commentsList = currArticleData.comments?.map((comment, idx) => {
-		return comment.commentContent ? (
+	const commentsList = currArticleData.comments?.map((comment) => {
+		return (
 			<Comment
 				key={comment.commentID}
 				comment={comment}
 				currArticleData={currArticleData}
 				setCurrArticleData={setCurrArticleData}
 			/>
-		) : (
-			<p key={idx} className="text-sm font-text pb-7 lg:pb-14">
-				Leave a comment to start a discussion!
-			</p>
 		);
 	});
 
 	return (
 		<div>
-			<section className="flex flex-col mb-10 w-full h-full min-h-full">
+			<section className="flex flex-col pb-10 w-full h-full min-h-full">
 				<p className="font-logo font-semibold text-gray-200 border-b border-gray-500 px-3 py-1 mt-7 mb-7 w-full">
 					Start a Discussion
 				</p>
@@ -49,7 +52,10 @@ const CommentsList = ({ currArticleData, setCurrArticleData }) => {
 					onChange={(e) => setContent(e.target.value)}
 					className="bg-gray-200 text-sm text-gray-900 flex-grow-0 flex-shrink-0 border-solid border border-gray-300 p-2 w-full h-24 outline-none resize-none focus:ring-2 focus:ring-blue-500 lg:text-lg h-36"
 				/>
-				<button className="bg-indigo-600 mb-8 py-2 w-full lg:py-4 lg:mb-16" onClick={onHandleCommentCreate}>
+				<button
+					className="bg-indigo-600 mb-8 py-2 w-full lg:py-4 lg:mb-16"
+					onClick={onHandleCommentCreate}
+				>
 					Comment
 				</button>
 				<div>{commentsList}</div>

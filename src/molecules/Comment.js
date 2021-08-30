@@ -34,19 +34,21 @@ const Comment = ({ comment, currArticleData, setCurrArticleData }) => {
 		const token = localStorage.getItem("authToken");
 		if (!token) return;
 
-		const updatedList = currArticleData.comments.filter((comment) => {
+		const copyArticleArray = JSON.parse(JSON.stringify(currArticleData));
+
+		copyArticleArray.comments = copyArticleArray.comments.filter((comment) => {
 			return comment.commentID !== commentID;
 		});
 
 		await deleteComment(commentID, token);
-		setCurrArticleData(updatedList);
+		setCurrArticleData(copyArticleArray);
 	};
 
 	const renderedButtons =
 		userDetails === comment.commentAuthorID ? (
 			<div className="flex gap-4 text-xs">
 				<button onClick={() => onHandleToggleEdit(comment.commentID)}>Edit</button>
-				<button onClick={onHandleDeleteComment}>Delete</button>
+				<button onClick={() => onHandleDeleteComment(comment.commentID)}>Delete</button>
 			</div>
 		) : (
 			""
