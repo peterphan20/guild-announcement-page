@@ -1,4 +1,3 @@
-import React from "react";
 import Hero from "../organisms/Hero";
 import Gallery from "../organisms/Gallery";
 import ArticlesList from "../organisms/ArticlesList";

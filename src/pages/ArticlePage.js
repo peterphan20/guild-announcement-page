@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import useModal from "../helpers/useModal";
 
 import CommentsList from "../organisms/CommentsList";
 import Modal from "../organisms/Modal";
@@ -10,11 +9,10 @@ import { deleteArticle, getArticle } from "../helpers/articlesCRUD";
 
 const ArticlePage = () => {
 	const [currArticleData, setCurrArticleData] = useState([]);
+	const [deleteArticleModalIsShowing, setDeleteArticleModalIsShowing] = useState(false);
 	const [userDetails] = useContext(userDetailsContext);
 	const { articleID } = useParams();
 	const history = useHistory();
-	// eslint-disable-next-line
-	const { toggle, showModal } = useModal();
 
 	useEffect(() => {
 		async function fetchData() {
@@ -46,7 +44,7 @@ const ArticlePage = () => {
 			<div className="flex justify-end self-center pb-4">
 				<button
 					className="font-text text-red-600 text-xs border border-gray-500 rounded-lg py-1 px-2"
-					onClick={toggle}
+					onClick={() => setDeleteArticleModalIsShowing(true)}
 				>
 					Delete article
 				</button>
@@ -57,7 +55,13 @@ const ArticlePage = () => {
 
 	return (
 		<div className="bg-dark_background text-gray-200 w-full h-full pt-28 px-3 min-h-full lg:pt-40 lg:px-80">
-			<Modal text="article" clickHandler={() => onHandleDeleteArticle(currArticleData.articleID)} />
+			{deleteArticleModalIsShowing ? (
+				<Modal
+					modalHandler={setDeleteArticleModalIsShowing}
+					text="article"
+					clickHandler={() => onHandleDeleteArticle(currArticleData.articleID)}
+				/>
+			) : null}
 			<p className="font-logo text-xs pb-1 lg:text-lg">
 				{new Date(currArticleData.createdAt).toString().substring(3, 16)}
 			</p>

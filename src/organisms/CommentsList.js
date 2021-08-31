@@ -23,20 +23,24 @@ const CommentsList = ({ currArticleData, setCurrArticleData }) => {
 		const response = await createComment(commentObj, token);
 		const newComment = response.rows[0];
 
-		const copyArticle = JSON.parse(JSON.stringify(currArticleData));
-		copyArticle.comments.push(newComment);
+		const newCommentsObj = JSON.parse(JSON.stringify(currArticleData));
+		newCommentsObj.comments.push(newComment);
 
-		setCurrArticleData(copyArticle);
+		setCurrArticleData(newCommentsObj);
 	};
 
-	const commentsList = currArticleData.comments?.map((comment) => {
-		return (
+	const commentsList = currArticleData.comments?.map((comment, idx) => {
+		return comment.commentContent ? (
 			<Comment
 				key={comment.commentID}
 				comment={comment}
 				currArticleData={currArticleData}
 				setCurrArticleData={setCurrArticleData}
 			/>
+		) : (
+			<p key={idx} className="text-sm font-text pb-7 lg:pb-14">
+				Leave a comment to start a discussion!
+			</p>
 		);
 	});
 

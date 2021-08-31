@@ -28,6 +28,16 @@ export const createUser = async (userObj) => {
 	return data;
 };
 
+export const persistAuthentication = async (token) => {
+	const res = await fetch(`${API_URL}/authenticated`, {
+		headers: {
+			auth: token,
+		},
+	});
+	const data = await res.json();
+	return data;
+};
+
 export const deleteUser = async (userID, token) => {
 	const res = await fetch(`${API_URL}/users/${userID}`, {
 		method: "DELETE",
@@ -37,5 +47,5 @@ export const deleteUser = async (userID, token) => {
 		},
 	});
 	const data = res.json();
-	return data.rows;
+	return data;
 };

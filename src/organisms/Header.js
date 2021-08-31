@@ -1,13 +1,29 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
 
 import DesktopMenu from "../molecules/MenuDesktop";
 import MenuMobile from "../molecules/MenuMobile";
+import { userDetailsContext } from "../context/UserDetailsProvider";
+import { persistAuthentication } from "../helpers/usersCRUD";
 
 const Header = () => {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 	const [isOpen, setOpen] = useState(false);
+	// eslint-disable-next-line
+	const [userDetails, setUserDetails] = useContext(userDetailsContext);
+
+	useEffect(() => {
+		async function fetchAuthentication() {
+			const token = localStorage.getItem("authToken");
+			if (!token) return;
+
+			const response = await persistAuthentication(token);
+			console.log("response object", response);
+			setUserDetails(response.id);
+		}
+		fetchAuthentication();
+	}, [setUserDetails]);
 
 	const trackWindowChanges = () => {
 		setWindowWidth(window.innerWidth);
