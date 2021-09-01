@@ -42,7 +42,6 @@ export const deleteUser = async (userID, token) => {
 	const res = await fetch(`${API_URL}/users/${userID}`, {
 		method: "DELETE",
 		headers: {
-			"Content-Type": "application/json; charset=UTF-8",
 			auth: token,
 		},
 	});
