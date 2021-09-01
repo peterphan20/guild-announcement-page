@@ -19,7 +19,6 @@ const Header = () => {
 			if (!token) return;
 
 			const response = await persistAuthentication(token);
-			console.log("response object", response);
 			setUserDetails(response.id);
 		}
 		fetchAuthentication();

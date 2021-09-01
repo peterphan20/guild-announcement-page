@@ -5,7 +5,7 @@ const InputFieldArticleCreation = ({ text, value, onChange, className = "" }) =>
 		<div>
 			<input
 				type="text"
-				className={`${className} bg-gray-100 text-gray-900 text-base outline-none py-3 px-2 w-full focus:ring-2 focus:ring-blue-500 `}
+				className={`${className} bg-gray-100 text-gray-900 text-base border border-gray-300 outline-none py-3 px-2 w-full focus:ring-2 focus:ring-blue-500`}
 				placeholder={text}
 				value={value}
 				onChange={onChange}

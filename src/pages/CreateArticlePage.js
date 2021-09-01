@@ -60,7 +60,10 @@ const CreateArticlePage = () => {
 					value={articleContent}
 					onChange={(e) => setArticleContent(e.target.value)}
 				/>
-				<button className="bg-indigo-600 text-gray-200 mb-8 w-full h-12 -my-2" onClick={onHandleArticleSubmit}>
+				<button
+					className="bg-indigo-600 text-gray-200 mb-8 w-full h-12"
+					onClick={onHandleArticleSubmit}
+				>
 					Submit
 				</button>
 			</div>
