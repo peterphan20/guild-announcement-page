@@ -11,7 +11,9 @@ const AboutPage = () => {
 			<p className="text-center font-logo font-semibold border-b-2 border-indigo-200 py-1 mt-5 mb-7 lg:text-3xl lg:mt-10">
 				About Us
 			</p>
-			<Image src="https://rb.gy/e3jfnl" alt="esports stadium" className="lg:w-96 lg:h-96" />
+			<div className="lg:mx-auto lg:h-3/6 lg:w-3/6">
+				<Image src="https://rb.gy/e3jfnl" alt="esports stadium" />
+			</div>
 			<p className="font-text text-base mt-7 lg:text-xl">
 				Founded in 2021, this is a guild announcements website that provides articles on gaming
 				related news as well as a gallery of stock images. The purpose of this project is to

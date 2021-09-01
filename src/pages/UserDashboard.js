@@ -38,7 +38,7 @@ const UserDashboard = () => {
 				Want to add an entry?
 			</h1>
 			<Link to="/create-article-page" aria-label="Click here to add an entry">
-				<button className="bg-green-600 font-text text-gray-200 text-sm rounded-lg py-1 px-2 mb-10 lg: text-base lg:py-2 lg:px-4">
+				<button className="bg-green-600 font-text text-gray-200 text-sm rounded-lg py-1 px-2 mb-10 lg:text-base lg:py-2 lg:px-4">
 					Create an article
 				</button>
 			</Link>
