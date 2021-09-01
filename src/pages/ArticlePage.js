@@ -49,9 +49,7 @@ const ArticlePage = () => {
 					Delete article
 				</button>
 			</div>
-		) : (
-			""
-		);
+		) : null;
 
 	return (
 		<div className="bg-dark_background text-gray-200 w-full h-full pt-28 px-3 min-h-full lg:pt-40 lg:px-80">

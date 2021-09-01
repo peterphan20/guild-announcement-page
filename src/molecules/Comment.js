@@ -50,9 +50,7 @@ const Comment = ({ comment, currArticleData, setCurrArticleData }) => {
 				<button onClick={() => onHandleToggleEdit(comment.commentID)}>Edit</button>
 				<button onClick={() => setDeleteCommentModalIsShowing(true)}>Delete</button>
 			</div>
-		) : (
-			""
-		);
+		) : null;
 
 	const date = new Date(comment.createdAt);
 	return (

@@ -37,11 +37,7 @@ const CommentsList = ({ currArticleData, setCurrArticleData }) => {
 				currArticleData={currArticleData}
 				setCurrArticleData={setCurrArticleData}
 			/>
-		) : (
-			<p key={idx} className="text-sm font-text pb-7 lg:pb-14">
-				Leave a comment to start a discussion!
-			</p>
-		);
+		) : null;
 	});
 
 	return (
