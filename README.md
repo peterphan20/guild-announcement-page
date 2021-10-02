@@ -43,3 +43,5 @@ The user is given current articles on guild related content and may view images 
 This project is not accepting contributions. You are welcome to use as a template.
 
 ## License
+
+MIT License
