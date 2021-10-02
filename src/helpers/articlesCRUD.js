@@ -15,7 +15,6 @@ export const getArticle = async (articleID) => {
 };
 
 export const createArticle = async (articlesObj, token) => {
-	console.log(articlesObj);
 	const res = await fetch(`${API_URL}/articles`, {
 		method: "POST",
 		body: JSON.stringify(articlesObj),
