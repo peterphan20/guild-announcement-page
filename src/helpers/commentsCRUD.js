@@ -11,7 +11,7 @@ export const createComment = async (commentObj, token) => {
 			auth: token,
 		},
 	});
-	const data = res.json();
+	const data = await res.json();
 	return data;
 };
 

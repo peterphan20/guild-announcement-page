@@ -23,7 +23,7 @@ export const createArticle = async (articlesObj, token) => {
 			auth: token,
 		},
 	});
-	const data = res.json();
+	const data = await res.json();
 	return data;
 };
 
@@ -36,7 +36,7 @@ export const updateArticle = async (articleID, articlesObj, token) => {
 			auth: token,
 		},
 	});
-	const data = res.json();
+	const data = await res.json();
 	return data;
 };
 
@@ -48,6 +48,6 @@ export const deleteArticle = async (articleID, token) => {
 			auth: token,
 		},
 	});
-	const data = res.json();
+	const data = await res.json();
 	return data;
 };
